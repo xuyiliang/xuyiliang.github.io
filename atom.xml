@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xuyiliang.github.io/</id>
-    <title>yiliang_blog</title>
-    <updated>2020-04-15T09:43:39.494Z</updated>
+    <title>YiLiang_blog</title>
+    <updated>2020-04-15T09:48:12.487Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xuyiliang.github.io/"/>
     <link rel="self" href="https://xuyiliang.github.io/atom.xml"/>
-    <subtitle>记录生活</subtitle>
+    <subtitle>Record Life</subtitle>
     <logo>https://xuyiliang.github.io/images/avatar.png</logo>
     <icon>https://xuyiliang.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, yiliang_blog</rights>
+    <rights>All rights reserved 2020, YiLiang_blog</rights>
     <entry>
         <title type="html"><![CDATA[Hello]]></title>
         <id>https://xuyiliang.github.io/post/hello-gridea/</id>
