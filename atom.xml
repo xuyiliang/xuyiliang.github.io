@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xuyiliang.github.io/</id>
     <title>YiLiang_blog</title>
-    <updated>2020-04-17T16:48:13.740Z</updated>
+    <updated>2020-04-17T17:09:55.062Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xuyiliang.github.io/"/>
     <link rel="self" href="https://xuyiliang.github.io/atom.xml"/>
@@ -10,6 +10,47 @@
     <logo>https://xuyiliang.github.io/images/avatar.png</logo>
     <icon>https://xuyiliang.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, YiLiang_blog</rights>
+    <entry>
+        <title type="html"><![CDATA[每日一题 leetcode11 装最多水的容器]]></title>
+        <id>https://xuyiliang.github.io/post/mei-ri-yi-ti-leetcode11-zhuang-zui-duo-shui-de-rong-qi/</id>
+        <link href="https://xuyiliang.github.io/post/mei-ri-yi-ti-leetcode11-zhuang-zui-duo-shui-de-rong-qi/">
+        </link>
+        <updated>2020-04-17T17:02:52.000Z</updated>
+        <content type="html"><![CDATA[<p>直接放题目，这道题应该就比较熟悉了</p>
+<pre><code>给你 n 个非负整数 a1，a2，...，an，每个数代表坐标中的一个点 (i, ai) 。在坐标内画 n 条垂直线，垂直线 i 的两个端点分别为 (i, ai) 和 (i, 0)。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。
+
+说明：你不能倾斜容器，且 n 的值至少为 2。
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://aliyun-lc-upload.oss-cn-hangzhou.aliyuncs.com/aliyun-lc-upload/uploads/2018/07/25/question_11.jpg" alt="img" loading="lazy"></figure>
+<p>首先先明白题意，就是给一个数组，数组中的数字代表着柱子的高度，然后需要找到两根柱子，他们之间能装的水最多，返回水量。</p>
+<p>那么<strong>水量=两根柱子较短的那根*两根柱子之间的距离</strong></p>
+<p>明白这个之后，就可以做题了</p>
+<p>这道题的话采用双指针+贪心，设定<strong>left=0,right=height.length-1</strong>,然后用一个数来存放结果，那么柱子left和right如何变化呢？</p>
+<p>如果<strong>height[left]&lt;height[right]</strong>,那么<strong>left++</strong>，反之则<strong>right++</strong>，因为水能够存放多少是由短的那个柱子决定的，就是所谓的木桶短板效应了。</p>
+<p>直接贴代码</p>
+<pre><code class="language-java">class Solution {
+    public static int maxArea(int[] height) {
+        if(height.length==0 || height.length==1){
+            return 0;
+        }
+        int max = 0;
+        int left = 0;
+        int right = height.length-1;
+        while(left&lt;right){
+            int cur = Math.min(height[left],height[right])*(right-left);
+            max = cur&gt;max?cur:max;
+            if(height[left]&lt;height[right]){
+                left++;
+            }else{
+                right--;
+            }
+        }
+        return max;
+    }
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[每日一题 leetcode69.x的平方根]]></title>
         <id>https://xuyiliang.github.io/post/mei-ri-yi-ti-leetcode69x-de-ping-fang-gen/</id>
@@ -25,7 +66,7 @@
 由于返回类型是整数，结果只保留整数的部分，小数部分将被舍去。
 </code></pre>
 <p>这道题就是让我们自己实现Math.sqrt()函数，一拿到，有没有想直接调个函数，返回，但是不可取哦，真的面试可不能这样。</p>
-<p>说一下拿到这道题的思路，一开始我是想着，输入一个数x，那就用for循环从i=0到i=x/2+1进行判断，然后如果<strong><em>i的平方&lt;=x &amp;&amp; (i+1)的平方&gt;=x<em><strong>那就说明找到了；但是这个想法有两个问题，第一个是时间太久了，第二个是，i的平方有可能int装不下，那么此时想到把判断</strong>i的平方&lt;=x</em></em>转化成</strong>i&lt;=x/i**这样就不用去管会不会超出范围了。</p>
+<p>说一下拿到这道题的思路，一开始我是想着，输入一个数x，那就用for循环从i=0到i=x/2+1进行判断，然后如果***i的平方&lt;=x &amp;&amp; (i+1)的平方&gt;=x***那就说明找到了；但是这个想法有两个问题，第一个是时间太久了，第二个是，i的平方有可能int装不下，那么此时想到把判断***i的平方&lt;=x***转化成***i&lt;=x/i ***这样就不用去管会不会超出范围了。</p>
 <p>那时间太久呢？采用二分法，由于x是Int，所以最大2147483647开平方46340.95，所以只要在0~46341间做判断就行了。代码如下</p>
 <pre><code class="language-java">class Solution {
     public static int mySqrt(int x) {
