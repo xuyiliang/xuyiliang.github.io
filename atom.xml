@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xuyiliang.github.io/</id>
     <title>YiLiang_blog</title>
-    <updated>2020-04-15T11:37:23.078Z</updated>
+    <updated>2020-04-17T16:48:13.740Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xuyiliang.github.io/"/>
     <link rel="self" href="https://xuyiliang.github.io/atom.xml"/>
@@ -10,6 +10,50 @@
     <logo>https://xuyiliang.github.io/images/avatar.png</logo>
     <icon>https://xuyiliang.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, YiLiang_blog</rights>
+    <entry>
+        <title type="html"><![CDATA[每日一题 leetcode69.x的平方根]]></title>
+        <id>https://xuyiliang.github.io/post/mei-ri-yi-ti-leetcode69x-de-ping-fang-gen/</id>
+        <link href="https://xuyiliang.github.io/post/mei-ri-yi-ti-leetcode69x-de-ping-fang-gen/">
+        </link>
+        <updated>2020-04-17T16:38:17.000Z</updated>
+        <content type="html"><![CDATA[<p>今天开始更新做数据结构算法题的感想与收获吧！</p>
+<pre><code>题目：
+实现 int sqrt(int x) 函数。
+
+计算并返回 x 的平方根，其中 x 是非负整数。
+
+由于返回类型是整数，结果只保留整数的部分，小数部分将被舍去。
+</code></pre>
+<p>这道题就是让我们自己实现Math.sqrt()函数，一拿到，有没有想直接调个函数，返回，但是不可取哦，真的面试可不能这样。</p>
+<p>说一下拿到这道题的思路，一开始我是想着，输入一个数x，那就用for循环从i=0到i=x/2+1进行判断，然后如果<strong><em>i的平方&lt;=x &amp;&amp; (i+1)的平方&gt;=x<em><strong>那就说明找到了；但是这个想法有两个问题，第一个是时间太久了，第二个是，i的平方有可能int装不下，那么此时想到把判断</strong>i的平方&lt;=x</em></em>转化成</strong>i&lt;=x/i**这样就不用去管会不会超出范围了。</p>
+<p>那时间太久呢？采用二分法，由于x是Int，所以最大2147483647开平方46340.95，所以只要在0~46341间做判断就行了。代码如下</p>
+<pre><code class="language-java">class Solution {
+    public static int mySqrt(int x) {
+        int res = 0;
+        if(x==0)
+            return res;
+        int left = 0;
+        int right = 46341;
+        while(left&lt;right){
+            int mid = left + (right - left)/2;
+            if(x/mid&gt;=mid &amp;&amp; x/(mid+1)&lt;=(mid+1)){
+                if(x/(mid+1)==(mid+1)){
+                    return mid+1;
+                }else{
+                    return mid;
+                }
+            }else if((mid+1)&lt;x/(mid+1)){
+                left = mid+1;
+            }else{
+                right = mid;
+            }
+        }
+        return res;
+    }
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Hello]]></title>
         <id>https://xuyiliang.github.io/post/hello-gridea/</id>

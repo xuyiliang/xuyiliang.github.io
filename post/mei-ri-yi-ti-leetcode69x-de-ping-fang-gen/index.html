@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>关于 | YiLiang_blog</title>
+<title>每日一题 leetcode69.x的平方根 | YiLiang_blog</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -18,16 +18,15 @@
 
 
 
-    <meta name="description" content="
-欢迎来到我的小站呀，很高兴遇见你！🤝
+    <meta name="description" content="今天开始更新做数据结构算法题的感想与收获吧！
+题目：
+实现 int sqrt(int x) 函数。
 
-🏠 关于本站
-👨‍💻 博主是谁
-⛹ 兴趣爱好
-📬 联系我呀
-邮箱：xu_yi_liang@163.com
-有什么问题都可以讨论哦！
-..." />
+计算并返回 x 的平方根，其中 x 是非负整数。
+
+由于返回类型是整数，结果只保留整数的部分，小数部分将被舍去。
+
+这道题就是让我们自己实..." />
     <meta name="keywords" content="" />
   </head>
   <body>
@@ -99,22 +98,58 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">关于</h2>
-            <div class="post-date">2019-01-25</div>
+            <h2 class="post-title">每日一题 leetcode69.x的平方根</h2>
+            <div class="post-date">2020-04-18</div>
             
             <div class="post-content" v-pre>
-              <blockquote>
-<p>欢迎来到我的小站呀，很高兴遇见你！🤝</p>
-</blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<h2 id="联系我呀">📬 联系我呀</h2>
-<h3 id="邮箱xu_yi_liang163com">邮箱：xu_yi_liang@163.com</h3>
-<p><strong>有什么问题都可以讨论哦！</strong></p>
+              <p>今天开始更新做数据结构算法题的感想与收获吧！</p>
+<pre><code>题目：
+实现 int sqrt(int x) 函数。
+
+计算并返回 x 的平方根，其中 x 是非负整数。
+
+由于返回类型是整数，结果只保留整数的部分，小数部分将被舍去。
+</code></pre>
+<p>这道题就是让我们自己实现Math.sqrt()函数，一拿到，有没有想直接调个函数，返回，但是不可取哦，真的面试可不能这样。</p>
+<p>说一下拿到这道题的思路，一开始我是想着，输入一个数x，那就用for循环从i=0到i=x/2+1进行判断，然后如果<strong><em>i的平方&lt;=x &amp;&amp; (i+1)的平方&gt;=x<em><strong>那就说明找到了；但是这个想法有两个问题，第一个是时间太久了，第二个是，i的平方有可能int装不下，那么此时想到把判断</strong>i的平方&lt;=x</em></em>转化成</strong>i&lt;=x/i**这样就不用去管会不会超出范围了。</p>
+<p>那时间太久呢？采用二分法，由于x是Int，所以最大2147483647开平方46340.95，所以只要在0~46341间做判断就行了。代码如下</p>
+<pre><code class="language-java">class Solution {
+    public static int mySqrt(int x) {
+        int res = 0;
+        if(x==0)
+            return res;
+        int left = 0;
+        int right = 46341;
+        while(left&lt;right){
+            int mid = left + (right - left)/2;
+            if(x/mid&gt;=mid &amp;&amp; x/(mid+1)&lt;=(mid+1)){
+                if(x/(mid+1)==(mid+1)){
+                    return mid+1;
+                }else{
+                    return mid;
+                }
+            }else if((mid+1)&lt;x/(mid+1)){
+                left = mid+1;
+            }else{
+                right = mid;
+            }
+        }
+        return res;
+    }
+}
+</code></pre>
 
             </div>
             
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://xuyiliang.github.io/post/hello-gridea/">
+                  <h3 class="post-title">
+                    Hello
+                  </h3>
+                </a>
+              </div>
             
 
             
