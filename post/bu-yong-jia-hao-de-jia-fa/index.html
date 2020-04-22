@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>算法 | YiLiang_blog</title>
+<title>不用加号的加法 | YiLiang_blog</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -18,7 +18,14 @@
 
 
 
-    <meta name="description" content="Record Life">
+    <meta name="description" content="设计一个函数把两个数字相加。不得使用 + 或者其他算术运算符。
+示例:
+输入: a = 1, b = 1
+输出: 2
+这道题是简单题，不过得了解一些异或操作才能做出来。
+思路就是用^存放值，&amp;和&lt;&lt;进位
+class So..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
@@ -88,43 +95,48 @@
 
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
-          <h2 class="current-tag">标签: 算法</h2>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://xuyiliang.github.io/post/mei-ri-yi-ti-leetcode11-zhuang-zui-duo-shui-de-rong-qi/">
-                  <h2 class="post-title">每日一题 leetcode11 装最多水的容器</h2>
-                </a>
-                <div class="post-date">
-                  2020-04-18
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://xuyiliang.github.io/post/mei-ri-yi-ti-leetcode69x-de-ping-fang-gen/">
-                  <h2 class="post-title">每日一题 leetcode69.x的平方根</h2>
-                </a>
-                <div class="post-date">
-                  2020-04-18
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
+          <div class="post-detail">
+            <h2 class="post-title">不用加号的加法</h2>
+            <div class="post-date">2020-04-22</div>
+            
+            <div class="post-content" v-pre>
+              <p>设计一个函数把两个数字相加。不得使用 + 或者其他算术运算符。</p>
+<p>示例:<br>
+输入: a = 1, b = 1<br>
+输出: 2</p>
+<p>这道题是简单题，不过得了解一些异或操作才能做出来。<br>
+思路就是用^存放值，&amp;和&lt;&lt;进位</p>
+<pre><code>class Solution {
+    public int add(int a, int b) {
+        int sum = 0;
+        int carry = 0;
+        while(b!=0){
+            sum = a ^ b;
+            carry = (a &amp; b)&lt;&lt;1;
+            a = sum;
+            b = carry;
+        }
+        return a;
+    }
+}
+</code></pre>
 
-          <div class="pagination-container">
-  
-  
-</div>
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://xuyiliang.github.io/post/mei-ri-yi-ti-leetcode11-zhuang-zui-duo-shui-de-rong-qi/">
+                  <h3 class="post-title">
+                    每日一题 leetcode11 装最多水的容器
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
 
         </div>
       </div>
