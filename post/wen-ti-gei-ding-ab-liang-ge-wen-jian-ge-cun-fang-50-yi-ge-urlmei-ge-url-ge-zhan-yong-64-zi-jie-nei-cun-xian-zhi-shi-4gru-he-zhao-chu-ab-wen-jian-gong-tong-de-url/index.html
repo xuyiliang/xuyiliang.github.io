@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>每日一题 leetcode 17.01.不用加号的加法 | YiLiang_blog</title>
+<title>问题：给定a、b两个文件，各存放50亿个url，每个url各占用64字节，内存限制是4G，如何找出a、b文件共同的url？ | YiLiang_blog</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -18,13 +18,9 @@
 
 
 
-    <meta name="description" content="设计一个函数把两个数字相加。不得使用 + 或者其他算术运算符。
-示例:
-输入: a = 1, b = 1
-输出: 2
-这道题是简单题，不过得了解一些异或操作才能做出来。
-思路就是用^存放值，&amp;和&lt;&lt;进位
-class So..." />
+    <meta name="description" content="毫无疑问还是采用分而治之的思想：
+1.  遍历文件a，对每个url求取hash(url)%1000，然后根据所得值将url分别存储到1000个小文件（设为a0,a1,...a999）当中；
+遍历文件b，对每个url求取hash(url)%1..." />
     <meta name="keywords" content="" />
   </head>
   <body>
@@ -96,39 +92,26 @@ class So..." />
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">每日一题 leetcode 17.01.不用加号的加法</h2>
-            <div class="post-date">2020-04-22</div>
+            <h2 class="post-title">问题：给定a、b两个文件，各存放50亿个url，每个url各占用64字节，内存限制是4G，如何找出a、b文件共同的url？</h2>
+            <div class="post-date">2020-04-29</div>
             
             <div class="post-content" v-pre>
-              <p>设计一个函数把两个数字相加。不得使用 + 或者其他算术运算符。</p>
-<p>示例:<br>
-输入: a = 1, b = 1<br>
-输出: 2</p>
-<p>这道题是简单题，不过得了解一些异或操作才能做出来。<br>
-思路就是用^存放值，&amp;和&lt;&lt;进位</p>
-<pre><code>class Solution {
-    public int add(int a, int b) {
-        int sum = 0;
-        int carry = 0;
-        while(b!=0){
-            sum = a ^ b;
-            carry = (a &amp; b)&lt;&lt;1;
-            a = sum;
-            b = carry;
-        }
-        return a;
-    }
-}
-</code></pre>
+              <p>毫无疑问还是采用分而治之的思想：</p>
+<p>1.  遍历文件a，对每个url求取hash(url)%1000，然后根据所得值将url分别存储到1000个小文件（设为a0,a1,...a999）当中；</p>
+<p>遍历文件b，对每个url求取hash(url)%1000，然后根据所得值将url分别存储到1000个小文件（设为b0,b1,...b999）当中；</p>
+<p>这样处理后，所有可能相同的url都在对应的小文件(a0-b0, a1-b1....a999-b999)当中，不对应的小文件（比如a0-b99）不可能有相同的url。</p>
+<p>2.  统计1000对文件中相同的url，采用hash_set.</p>
+<p>比如对a0-b0，遍历a0，将其中的url存储到hash_set当中；</p>
+<p>然后遍历b0，如果url在hash_map中，则说明此url在a和b中同时存在，保存到文件中即可。</p>
 
             </div>
             
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://xuyiliang.github.io/post/mei-ri-yi-ti-leetcode11-zhuang-zui-duo-shui-de-rong-qi/">
+                <a href="https://xuyiliang.github.io/post/bian-li-n-ge-yuan-su-deng-gai-lu-sui-ji-qu-chu-qi-zhong-zhi-yi-yuan-su/">
                   <h3 class="post-title">
-                    每日一题 leetcode11 装最多水的容器
+                    遍历n个元素等概率随机取出其中之一元素
                   </h3>
                 </a>
               </div>

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xuyiliang.github.io/</id>
     <title>YiLiang_blog</title>
-    <updated>2020-04-29T07:14:50.679Z</updated>
+    <updated>2020-04-29T07:34:27.706Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xuyiliang.github.io/"/>
     <link rel="self" href="https://xuyiliang.github.io/atom.xml"/>
@@ -10,6 +10,21 @@
     <logo>https://xuyiliang.github.io/images/avatar.png</logo>
     <icon>https://xuyiliang.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, YiLiang_blog</rights>
+    <entry>
+        <title type="html"><![CDATA[问题：给定a、b两个文件，各存放50亿个url，每个url各占用64字节，内存限制是4G，如何找出a、b文件共同的url？]]></title>
+        <id>https://xuyiliang.github.io/post/wen-ti-gei-ding-ab-liang-ge-wen-jian-ge-cun-fang-50-yi-ge-urlmei-ge-url-ge-zhan-yong-64-zi-jie-nei-cun-xian-zhi-shi-4gru-he-zhao-chu-ab-wen-jian-gong-tong-de-url/</id>
+        <link href="https://xuyiliang.github.io/post/wen-ti-gei-ding-ab-liang-ge-wen-jian-ge-cun-fang-50-yi-ge-urlmei-ge-url-ge-zhan-yong-64-zi-jie-nei-cun-xian-zhi-shi-4gru-he-zhao-chu-ab-wen-jian-gong-tong-de-url/">
+        </link>
+        <updated>2020-04-29T07:25:49.000Z</updated>
+        <content type="html"><![CDATA[<p>毫无疑问还是采用分而治之的思想：</p>
+<p>1.  遍历文件a，对每个url求取hash(url)%1000，然后根据所得值将url分别存储到1000个小文件（设为a0,a1,...a999）当中；</p>
+<p>遍历文件b，对每个url求取hash(url)%1000，然后根据所得值将url分别存储到1000个小文件（设为b0,b1,...b999）当中；</p>
+<p>这样处理后，所有可能相同的url都在对应的小文件(a0-b0, a1-b1....a999-b999)当中，不对应的小文件（比如a0-b99）不可能有相同的url。</p>
+<p>2.  统计1000对文件中相同的url，采用hash_set.</p>
+<p>比如对a0-b0，遍历a0，将其中的url存储到hash_set当中；</p>
+<p>然后遍历b0，如果url在hash_map中，则说明此url在a和b中同时存在，保存到文件中即可。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[遍历n个元素等概率随机取出其中之一元素]]></title>
         <id>https://xuyiliang.github.io/post/bian-li-n-ge-yuan-su-deng-gai-lu-sui-ji-qu-chu-qi-zhong-zhi-yi-yuan-su/</id>
