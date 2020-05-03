@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>每日一题 第125题——验证文字串 | YiLiang_blog</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://xuyiliang.github.io//favicon.ico?v=1588523308073">
+<link rel="stylesheet" href="https://xuyiliang.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="题目说明：给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。
+示例：
+输入: &quot;A man, a plan, a canal: Panama&quot;
+输出: true
+大家非常熟悉的验证回文串，最..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://xuyiliang.github.io/">
+        <img src="https://xuyiliang.github.io//images/avatar.png?v=1588523308073" class="site-logo">
+        <h1 class="site-title">YiLiang_blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      Record Life
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">xuyiliang</a> | <a class="rss" href="https://xuyiliang.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">每日一题 第125题——验证文字串</h2>
+            <div class="post-date">2020-05-04</div>
+            
+            <div class="post-content" v-pre>
+              <p>题目说明：给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。<br>
+示例：<br>
+输入: &quot;A man, a plan, a canal: Panama&quot;<br>
+输出: true<br>
+大家非常熟悉的验证回文串，最直接的思路就是双指针，左右往中间比较，根据题目只判断数字和字母，那么可以先把字符串全部大写或小写，方便比较，代码如下：(5ms)</p>
+<pre><code>class Solution {
+    public boolean isPalindrome(String s) {
+        if(s==null || s.length()==0) return true;
+        s = s.toUpperCase();
+        int l = 0;
+        int r = s.length()-1;
+        while(l&lt;r){
+            if(!(s.charAt(l)&gt;='0'&amp;&amp;s.charAt(l)&lt;='9' || s.charAt(l)&gt;='a'&amp;&amp;s.charAt(l)&lt;='z' || s.charAt(l)&gt;='A'&amp;&amp;s.charAt(l)&lt;='Z')){
+                l++;
+                continue;
+            }
+            if(!(s.charAt(r)&gt;='0'&amp;&amp;s.charAt(r)&lt;='9' || s.charAt(r)&gt;='a'&amp;&amp;s.charAt(r)&lt;='z' || s.charAt(r)&gt;='A'&amp;&amp;s.charAt(r)&lt;='Z')){
+                r--;
+                continue;
+            }
+            if(s.charAt(l)!=s.charAt(r)){
+                return false;
+            }
+            l++;
+            r--;
+        }
+        return true;
+    }
+}
+</code></pre>
+<p>这样可以通过用例，但是时间有点慢，原因在于大小写的转换需要一定时间，那么优化思路可以是，不需要去转换，在判断是字母的时候，可以通过左右两个char型字符相减的数值与(‘a’-'A')以及（‘A’-'a'）比较得到是不是同一个字母，代码如下：(1ms)</p>
+<pre><code>class Solution {
+    public boolean isPalindrome(String s) {
+        if(s==null || s.length()==0) return true;
+        int l = 0;
+        int r = s.length()-1;
+        while(l&lt;r){
+            char left = s.charAt(l);
+            char right = s.charAt(r);
+            if(!(isNum(left)||isWord(left))){
+                l++;
+                continue;
+            }
+            if(!(isNum(right)||isWord(right))){
+                r--;
+                continue;
+            }
+            if(left==right){
+                l++;
+                r--;
+            }else if(isWord(left)&amp;&amp;isWord(right)){
+                return left-right==('a'-'A')||left-right==('A'-'a');
+            }else{
+                return false;
+            }
+        }
+        return true;
+    }
+    public boolean isNum(char c){
+        return (c&gt;='0'&amp;&amp;c&lt;='9');
+    }
+    public boolean isWord(char c){
+        return (c&gt;='a'&amp;&amp;c&lt;='z')||(c&gt;='A'&amp;&amp;c&lt;='Z');
+    }
+}
+</code></pre>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://xuyiliang.github.io/post/wen-ti-gei-ding-ab-liang-ge-wen-jian-ge-cun-fang-50-yi-ge-urlmei-ge-url-ge-zhan-yong-64-zi-jie-nei-cun-xian-zhi-shi-4gru-he-zhao-chu-ab-wen-jian-gong-tong-de-url/">
+                  <h3 class="post-title">
+                    问题：给定a、b两个文件，各存放50亿个url，每个url各占用64字节，内存限制是4G，如何找出a、b文件共同的url？
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>
