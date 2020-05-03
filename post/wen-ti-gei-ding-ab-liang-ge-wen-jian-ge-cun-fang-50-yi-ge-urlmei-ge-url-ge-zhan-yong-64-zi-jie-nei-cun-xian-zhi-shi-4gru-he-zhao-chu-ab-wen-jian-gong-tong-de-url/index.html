@@ -1,94 +1,113 @@
-<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" >
 
-<title>问题：给定a、b两个文件，各存放50亿个url，每个url各占用64字节，内存限制是4G，如何找出a、b文件共同的url？ | YiLiang_blog</title>
-<meta name="description" content="Record Life">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://xuyiliang.github.io//favicon.ico?v=1588524305184">
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    问题：给定a、b两个文件，各存放50亿个url，每个url各占用64字节，内存限制是4G，如何找出a、b文件共同的url？ | YiLiang_blog
+</title>
+<link rel="shortcut icon" href="https://xuyiliang.github.io//favicon.ico?v=1588525320548">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://xuyiliang.github.io//styles/main.css">
-
-
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://xuyiliang.github.io//media/js/jquery.sticky-sidebar.min.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+        
+</head>
 
-
-  </head>
-  <body>
-  
-    <nav class="navbar border fixed split-nav">
-  <div class="nav-brand">
-    <h3><a href="https://xuyiliang.github.io/">YiLiang_blog</a></h3>
-  </div>
-  <div class="collapsible">
-    <input id="collapsible1" type="checkbox" name="collapsible1">
-    <button>
-      <label for="collapsible1">
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>
-      </label>
-    </button>
-    <div class="collapsible-body">
-      <ul class="inline">
-        
-          <li>
-            
-              <a href="/" class="menu">
-                首页
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/archives" class="menu">
-                归档
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/tags" class="menu">
-                标签
-              </a>
-            
-          </li>
-        
-          <li>
-            
-              <a href="/post/about" class="menu">
-                关于
-              </a>
-            
-          </li>
-        
-      </ul>
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://xuyiliang.github.io/">
+                <img class="avatar" src="https://xuyiliang.github.io//images/avatar.png?v=1588525320548" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    YiLiang_blog
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
     </div>
-  </div>
-</nav>
+</div>
 
-    <div id="top" class="row site">
-      <div class="sm-12 md-8 col">
-        <div class="paper">
-          <article class="article">
-            <h1>问题：给定a、b两个文件，各存放50亿个url，每个url各占用64字节，内存限制是4G，如何找出a、b文件共同的url？</h1>
-            <p class="article-meta">
-              2020-04-29
-              
-            </p>
-            
-            <div class="post-content">
-              <p>毫无疑问还是采用分而治之的思想：</p>
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
+
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            问题：给定a、b两个文件，各存放50亿个url，每个url各占用64字节，内存限制是4G，如何找出a、b文件共同的url？
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2020-04-29</time>
+                            
+                        </div>
+                        
+                                <div class="post-content">
+                                    <p>毫无疑问还是采用分而治之的思想：</p>
 <p>1.  遍历文件a，对每个url求取hash(url)%1000，然后根据所得值将url分别存储到1000个小文件（设为a0,a1,...a999）当中；</p>
 <p>遍历文件b，对每个url求取hash(url)%1000，然后根据所得值将url分别存储到1000个小文件（设为b0,b1,...b999）当中；</p>
 <p>这样处理后，所有可能相同的url都在对应的小文件(a0-b0, a1-b1....a999-b999)当中，不对应的小文件（比如a0-b99）不可能有相同的url。</p>
@@ -96,138 +115,80 @@
 <p>比如对a0-b0，遍历a0，将其中的url存储到hash_set当中；</p>
 <p>然后遍历b0，如果url在hash_map中，则说明此url在a和b中同时存在，保存到文件中即可。</p>
 
-            </div>
-          </article>
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://xuyiliang.github.io/post/bian-li-n-ge-yuan-su-deng-gai-lu-sui-ji-qu-chu-qi-zhong-zhi-yi-yuan-su/">
+                                <h3 class="post-title">
+                                    遍历n个元素等概率随机取出其中之一元素
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                                <!-- id-card -->
+                                
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://xuyiliang.github.io//images/avatar.png?v=1588525320548)">
         </div>
-        <div class="paper" data-aos="fade-in">
-          
-            <div class="next-post">
-              <div class="next">
-                下一篇
-              </div>
-              <a href="https://xuyiliang.github.io/post/bian-li-n-ge-yuan-su-deng-gai-lu-sui-ji-qu-chu-qi-zhong-zhi-yi-yuan-su/">
-                <h3 class="post-title">
-                  遍历n个元素等概率随机取出其中之一元素
-                </h3>
-              </a>
-            </div>
-          
-        </div>
-        
-      </div>
+        <h1 class="id_card-title">
+            YiLiang_blog
+        </h1>
+        <h2 class="id_card-description">
+            Record Life
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                    <!-- facebook -->
+                                    
 
-      <div class="sm-12 md-4 col sidebar">
-  <div class="paper info-container">
-    <img src="https://xuyiliang.github.io//images/avatar.png?v=1588524305184" class="no-responsive avatar">
-    <div class="text-muted">Record Life</div>
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
+        </div>
     </div>
-  </div>
-  <div class="paper">
-    <div class="sidebar-title">
-      最新文章
-    </div>
-    <div class="row">
-      <ul>
-        
-          
-            <li>
-              <a href="https://xuyiliang.github.io/post/mei-ri-yi-ti-di-125-ti-yan-zheng-wen-zi-chuan/">每日一题 第125题——验证文字串</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://xuyiliang.github.io/post/wen-ti-gei-ding-ab-liang-ge-wen-jian-ge-cun-fang-50-yi-ge-urlmei-ge-url-ge-zhan-yong-64-zi-jie-nei-cun-xian-zhi-shi-4gru-he-zhao-chu-ab-wen-jian-gong-tong-de-url/">问题：给定a、b两个文件，各存放50亿个url，每个url各占用64字节，内存限制是4G，如何找出a、b文件共同的url？</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://xuyiliang.github.io/post/bian-li-n-ge-yuan-su-deng-gai-lu-sui-ji-qu-chu-qi-zhong-zhi-yi-yuan-su/">遍历n个元素等概率随机取出其中之一元素</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://xuyiliang.github.io/post/bu-yong-jia-hao-de-jia-fa/">每日一题 leetcode 17.01.不用加号的加法</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://xuyiliang.github.io/post/mei-ri-yi-ti-leetcode11-zhuang-zui-duo-shui-de-rong-qi/">每日一题 leetcode11 装最多水的容器</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://xuyiliang.github.io/post/mei-ri-yi-ti-leetcode69x-de-ping-fang-gen/">每日一题 leetcode69.x的平方根</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://xuyiliang.github.io/post/about/">关于</a>
-            </li>
-          
-        
-          
-            <li>
-              <a href="https://xuyiliang.github.io/post/hello-gridea/">Hello</a>
-            </li>
-          
-        
-      </ul>
-    </div>
-  </div>
-  <div class="paper">
-    <div class="sidebar-title">
-      标签列表
-    </div>
-    <div class="row">
-      
-        <a href="https://xuyiliang.github.io/tag/-cM2vSO9N/" class="badge warning">
-          算法
-        </a>
-      
-        <a href="https://xuyiliang.github.io/tag/URCBQ1iId/" class="badge secondary">
-          数据结构
-        </a>
-      
-    </div>
-  </div>
-  <div class="paper">
-    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">xuyiliang</a> | <a class="rss" href="https://xuyiliang.github.io//atom.xml" target="_blank">RSS</a>
-  </div>
+    
+                                    
+
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">xuyiliang</a> | 
+  <a class="rss" href="https://xuyiliang.github.io//atom.xml" target="_blank">RSS</a>
 </div>
 
-
-    </div>
-
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-
-<script type="application/javascript">
-
-AOS.init();
-
-hljs.initHighlightingOnLoad()
-
+<script>
+  hljs.initHighlightingOnLoad()
 </script>
 
 
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+    
+</body>
 
-
-  </body>
 </html>
