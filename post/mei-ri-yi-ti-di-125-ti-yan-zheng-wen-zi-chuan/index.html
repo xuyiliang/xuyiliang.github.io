@@ -4,100 +4,90 @@
     <meta charset="utf-8" >
 
 <title>每日一题 第125题——验证文字串 | YiLiang_blog</title>
+<meta name="description" content="Record Life">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://xuyiliang.github.io//favicon.ico?v=1588524305184">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://xuyiliang.github.io//favicon.ico?v=1588523308073">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://xuyiliang.github.io//styles/main.css">
 
 
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
 
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 
-
-    <meta name="description" content="题目说明：给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。
-示例：
-输入: &quot;A man, a plan, a canal: Panama&quot;
-输出: true
-大家非常熟悉的验证回文串，最..." />
-    <meta name="keywords" content="" />
   </head>
   <body>
-    <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="https://xuyiliang.github.io/">
-        <img src="https://xuyiliang.github.io//images/avatar.png?v=1588523308073" class="site-logo">
-        <h1 class="site-title">YiLiang_blog</h1>
-      </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
-    </div>
-    <div>
-      
-        
-          <a href="/" class="site-nav">
-            首页
-          </a>
-        
-      
-        
-          <a href="/archives" class="site-nav">
-            归档
-          </a>
-        
-      
-        
-          <a href="/tags" class="site-nav">
-            标签
-          </a>
-        
-      
-        
-          <a href="/post/about" class="site-nav">
-            关于
-          </a>
-        
-      
-    </div>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://xuyiliang.github.io/">YiLiang_blog</a></h3>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
         
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      Record Life
-    </div>
-    <div class="site-footer">
-      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">xuyiliang</a> | <a class="rss" href="https://xuyiliang.github.io//atom.xml" target="_blank">RSS</a>
-    </div>
-  </div>
-</div>
-
-
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">每日一题 第125题——验证文字串</h2>
-            <div class="post-date">2020-05-04</div>
+          <li>
             
-            <div class="post-content" v-pre>
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>每日一题 第125题——验证文字串</h1>
+            <p class="article-meta">
+              2020-05-04
+              
+            </p>
+            
+            <div class="post-content">
               <p>题目说明：给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。<br>
 示例：<br>
 输入: &quot;A man, a plan, a canal: Panama&quot;<br>
@@ -166,41 +156,134 @@
 </code></pre>
 
             </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="https://xuyiliang.github.io/post/wen-ti-gei-ding-ab-liang-ge-wen-jian-ge-cun-fang-50-yi-ge-urlmei-ge-url-ge-zhan-yong-64-zi-jie-nei-cun-xian-zhi-shi-4gru-he-zhao-chu-ab-wen-jian-gong-tong-de-url/">
-                  <h3 class="post-title">
-                    问题：给定a、b两个文件，各存放50亿个url，每个url各占用64字节，内存限制是4G，如何找出a、b文件共同的url？
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-
-          </div>
-
+          </article>
         </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://xuyiliang.github.io/post/wen-ti-gei-ding-ab-liang-ge-wen-jian-ge-cun-fang-50-yi-ge-urlmei-ge-url-ge-zhan-yong-64-zi-jie-nei-cun-xian-zhi-shi-4gru-he-zhao-chu-ab-wen-jian-gong-tong-de-url/">
+                <h3 class="post-title">
+                  问题：给定a、b两个文件，各存放50亿个url，每个url各占用64字节，内存限制是4G，如何找出a、b文件共同的url？
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
       </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://xuyiliang.github.io//images/avatar.png?v=1588524305184" class="no-responsive avatar">
+    <div class="text-muted">Record Life</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://xuyiliang.github.io/post/mei-ri-yi-ti-di-125-ti-yan-zheng-wen-zi-chuan/">每日一题 第125题——验证文字串</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://xuyiliang.github.io/post/wen-ti-gei-ding-ab-liang-ge-wen-jian-ge-cun-fang-50-yi-ge-urlmei-ge-url-ge-zhan-yong-64-zi-jie-nei-cun-xian-zhi-shi-4gru-he-zhao-chu-ab-wen-jian-gong-tong-de-url/">问题：给定a、b两个文件，各存放50亿个url，每个url各占用64字节，内存限制是4G，如何找出a、b文件共同的url？</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://xuyiliang.github.io/post/bian-li-n-ge-yuan-su-deng-gai-lu-sui-ji-qu-chu-qi-zhong-zhi-yi-yuan-su/">遍历n个元素等概率随机取出其中之一元素</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://xuyiliang.github.io/post/bu-yong-jia-hao-de-jia-fa/">每日一题 leetcode 17.01.不用加号的加法</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://xuyiliang.github.io/post/mei-ri-yi-ti-leetcode11-zhuang-zui-duo-shui-de-rong-qi/">每日一题 leetcode11 装最多水的容器</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://xuyiliang.github.io/post/mei-ri-yi-ti-leetcode69x-de-ping-fang-gen/">每日一题 leetcode69.x的平方根</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://xuyiliang.github.io/post/about/">关于</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://xuyiliang.github.io/post/hello-gridea/">Hello</a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://xuyiliang.github.io/tag/-cM2vSO9N/" class="badge secondary">
+          算法
+        </a>
+      
+        <a href="https://xuyiliang.github.io/tag/URCBQ1iId/" class="badge warning">
+          数据结构
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">xuyiliang</a> | <a class="rss" href="https://xuyiliang.github.io//atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
     </div>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
 <script type="application/javascript">
 
 AOS.init();
 
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
+hljs.initHighlightingOnLoad()
 
 </script>
-
-
 
 
 
