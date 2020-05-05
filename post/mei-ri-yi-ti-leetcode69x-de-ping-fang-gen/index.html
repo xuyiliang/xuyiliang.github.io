@@ -7,7 +7,7 @@
 <title>
     每日一题 leetcode69.x的平方根 | YiLiang_blog
 </title>
-<link rel="shortcut icon" href="https://xuyiliang.github.io//favicon.ico?v=1588645792241">
+<link rel="shortcut icon" href="https://xuyiliang.github.io//favicon.ico?v=1588645957515">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -28,7 +28,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://xuyiliang.github.io/">
-                <img class="avatar" src="https://xuyiliang.github.io//images/avatar.png?v=1588645792241" alt="">
+                <img class="avatar" src="https://xuyiliang.github.io//images/avatar.png?v=1588645957515" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -105,12 +105,12 @@
                             <time class="post-time">2020-04-18</time>
                             
                                 <a href="https://xuyiliang.github.io/tag/-cM2vSO9N/" class="post-tag i-tag
-                            i-tag-other_3">
+                            i-tag-info">
                             #算法
                         </a>
                                 
                                 <a href="https://xuyiliang.github.io/tag/URCBQ1iId/" class="post-tag i-tag
-                            i-tag-success">
+                            i-tag-banana">
                             #数据结构
                         </a>
                                 
@@ -128,7 +128,7 @@
 由于返回类型是整数，结果只保留整数的部分，小数部分将被舍去。
 </code></pre>
 <p>这道题就是让我们自己实现Math.sqrt()函数，一拿到，有没有想直接调个函数，返回，但是不可取哦，真的面试可不能这样。</p>
-<p>说一下拿到这道题的思路，一开始我是想着，输入一个数x，那就用for循环从i=0到i=x/2+1进行判断，然后如果***i的平方&lt;=x &amp;&amp; (i+1)的平方&gt;=x***那就说明找到了；但是这个想法有两个问题，第一个是时间太久了，第二个是，i的平方有可能int装不下，那么此时想到把判断***i的平方&lt;=x***转化成***i&lt;=x/i ***这样就不用去管会不会超出范围了。</p>
+<p>说一下拿到这道题的思路，一开始我是想着，输入一个数x，那就用for循环从i=0到i=x/2+1进行判断，然后如果<strong>i的平方&lt;=x &amp;&amp; (i+1)的平方&gt;=x</strong>那就说明找到了；但是这个想法有两个问题，第一个是时间太久了，第二个是，i的平方有可能int装不下，那么此时想到把判断<strong>i的平方&lt;=x</strong>转化成**i&lt;=x/i **这样就不用去管会不会超出范围了。</p>
 <p>那时间太久呢？采用二分法，由于x是Int，所以最大2147483647开平方46340.95，所以只要在0~46341间做判断就行了。代码如下</p>
 <pre><code class="language-java">class Solution {
     public static int mySqrt(int x) {
@@ -171,7 +171,7 @@
                                 <!-- id-card -->
                                 
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://xuyiliang.github.io//images/avatar.png?v=1588645792241)">
+        <div class="id_card-avatar" style="background-image: url(https://xuyiliang.github.io//images/avatar.png?v=1588645957515)">
         </div>
         <h1 class="id_card-title">
             YiLiang_blog
