@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xuyiliang.github.io/</id>
     <title>YiLiang_blog</title>
-    <updated>2020-05-04T03:10:45.162Z</updated>
+    <updated>2020-05-05T02:29:56.885Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xuyiliang.github.io/"/>
     <link rel="self" href="https://xuyiliang.github.io/atom.xml"/>
@@ -10,6 +10,51 @@
     <logo>https://xuyiliang.github.io/images/avatar.png</logo>
     <icon>https://xuyiliang.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, YiLiang_blog</rights>
+    <entry>
+        <title type="html"><![CDATA[每日一题 204题 计数质数]]></title>
+        <id>https://xuyiliang.github.io/post/mei-ri-yi-ti-204-ti-ji-shu-zhi-shu/</id>
+        <link href="https://xuyiliang.github.io/post/mei-ri-yi-ti-204-ti-ji-shu-zhi-shu/">
+        </link>
+        <updated>2020-05-05T02:20:38.000Z</updated>
+        <content type="html"><![CDATA[<h4 id="统计所有小于非负整数-n-的质数的数量">统计所有小于非负整数 n 的质数的数量。</h4>
+<pre><code>示例:
+输入: 10
+输出: 4
+解释: 小于 10 的质数一共有 4 个, 它们是 2, 3, 5, 7 。
+</code></pre>
+<p>拿到题目，第一反应，写一个判断质数的函数，然后for循环，从2到n遍历一遍，但是这样<br>
+写的话，难免时间复杂度会很夸张，看到评论区有一种算法，叫做厄拉多塞筛法，感慨别人<br>
+的脑袋与自己的脑袋差太多了，记录下来，方便以后回顾。<br>
+思想如下：比如判断20以内的质数，<br>
+那么首先2是质数，所有偶数不再判断，因为都有一个2的因子，那就只判断奇数；<br>
+然后比如3是质数，那么6,9,12,15,18全部筛掉；<br>
+以此类推，5是质数，那么10,15,20全部筛掉。。。<br>
+最后就是2,3,5,7,11,13,17,19一共8个质数，最后直接贴代码：</p>
+<pre><code>class Solution {
+    public int countPrimes(int n) {
+        int res = 0;
+        //存放该数是否为质数,初始全部为false
+        boolean Primes[] = new boolean[n];
+        //当n大于2时一定有2这个质数
+        if(n&gt;2) res+=1;
+        //只遍历奇数，所以i+=2
+        for(int i=3;i&lt;n;i+=2){
+            //如果是质数
+            if(!Primes[i]){
+                //只计算奇数倍即可，因为偶数不遍历
+                for(int j=1;i*j&lt;n;j+=2){
+                    Primes[i*j]=true;
+                }
+                res++;
+            }
+        }
+        return res;
+    }
+}
+</code></pre>
+<p>继续学习，冲冲冲冲！！！</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[每日一题 第125题——验证文字串]]></title>
         <id>https://xuyiliang.github.io/post/mei-ri-yi-ti-di-125-ti-yan-zheng-wen-zi-chuan/</id>

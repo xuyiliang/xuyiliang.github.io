@@ -7,7 +7,7 @@
 <title>
     YiLiang_blog
 </title>
-<link rel="shortcut icon" href="https://xuyiliang.github.io//favicon.ico?v=1588561840391">
+<link rel="shortcut icon" href="https://xuyiliang.github.io//favicon.ico?v=1588645792241">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -27,7 +27,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://xuyiliang.github.io/">
-                <img class="avatar" src="https://xuyiliang.github.io//images/avatar.png?v=1588561840391" alt="">
+                <img class="avatar" src="https://xuyiliang.github.io//images/avatar.png?v=1588645792241" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -97,6 +97,69 @@
                 <div id="content" class="main-container-left">
                     
         
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://xuyiliang.github.io/post/mei-ri-yi-ti-204-ti-ji-shu-zhi-shu/">
+                        每日一题 204题 计数质数
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2020-05-05</time>
+                    
+                </div>
+                <div class="post-article">
+                    
+                        <a href="https://xuyiliang.github.io/post/mei-ri-yi-ti-204-ti-ji-shu-zhi-shu/" class="post-feature-image" style="background-image:url(https://xuyiliang.github.io//post-images/mei-ri-yi-ti-204-ti-ji-shu-zhi-shu.jpeg) ">
+                        </a>
+                        
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            统计所有小于非负整数 n 的质数的数量。
+示例:
+输入: 10
+输出: 4
+解释: 小于 10 的质数一共有 4 个, 它们是 2, 3, 5, 7 。
+
+拿到题目，第一反应，写一个判断质数的函数，然后for循环，从2到n遍历一遍，但是这样
+写的话，难免时间复杂度会很夸张，看到评论区有一种算法，叫做厄拉多塞筛法，感慨别人
+的脑袋与自己的脑袋差太多了，记录下来，方便以后回顾。
+思想如下：比如判断20以内的质数，
+那么首先2是质数，所有偶数不再判断，因为都有一个2的因子，那就只判断奇数；
+然后比如3是质数，那么6,9,12,15,18全部筛掉；
+以此类推，5是质数，那么10,15,20全部筛掉。。。
+最后就是2,3,5,7,11,13,17,19一共8个质数，最后直接贴代码：
+class Solution {
+    public int countPrimes(int n) {
+        int res = 0;
+        //存放该数是否为质数,初始全部为false
+        boolean Primes[] = new boolean[n];
+        //当n大于2时一定有2这个质数
+        if(n&amp;gt;2) res+=1;
+        //只遍历奇数，所以i+=2
+        for(int i=3;i&amp;lt;n;i+=2){
+            //如果是质数
+            if(!Primes[i]){
+                //只计算奇数倍即可，因为偶数不遍历
+                for(int j=1;i*j&amp;lt;n;j+=2){
+                    Primes[i*j]=true;
+                }
+                res++;
+            }
+        }
+        return res;
+    }
+}
+
+继续学习，冲冲冲冲！！！
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://xuyiliang.github.io/post/mei-ri-yi-ti-204-ti-ji-shu-zhi-shu/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
             <article class="post i-card">
                 <h2 class="post-title">
                     <a href="https://xuyiliang.github.io/post/mei-ri-yi-ti-di-125-ti-yan-zheng-wen-zi-chuan/">
@@ -328,12 +391,12 @@ class Solution {
                     <time class="post-time">2020-04-18</time>
                     
                         <a href="https://xuyiliang.github.io/tag/-cM2vSO9N/" class="post-tag i-tag
-                            i-tag-other_3">
+                            i-tag-">
             #算法
         </a>
                         
                         <a href="https://xuyiliang.github.io/tag/URCBQ1iId/" class="post-tag i-tag
-                            i-tag-other_1">
+                            i-tag-">
             #数据结构
         </a>
                         
@@ -398,12 +461,12 @@ class Solution {
                     <time class="post-time">2020-04-18</time>
                     
                         <a href="https://xuyiliang.github.io/tag/-cM2vSO9N/" class="post-tag i-tag
-                            i-tag-other_2">
+                            i-tag-">
             #算法
         </a>
                         
                         <a href="https://xuyiliang.github.io/tag/URCBQ1iId/" class="post-tag i-tag
-                            i-tag-other_2">
+                            i-tag-primary">
             #数据结构
         </a>
                         
@@ -471,7 +534,7 @@ class Solution {
                     <!-- 个人信息 -->
                     
     <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://xuyiliang.github.io//images/avatar.png?v=1588561840391)">
+        <div class="id_card-avatar" style="background-image: url(https://xuyiliang.github.io//images/avatar.png?v=1588645792241)">
         </div>
         <h1 class="id_card-title">
             YiLiang_blog

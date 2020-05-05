@@ -5,7 +5,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>
-    Hello | YiLiang_blog
+    每日一题 204题 计数质数 | YiLiang_blog
 </title>
 <link rel="shortcut icon" href="https://xuyiliang.github.io//favicon.ico?v=1588645792241">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
@@ -99,27 +99,67 @@
                 <div id="content" class="main-container-left">
                     <article class="post i-card">
                         <h2 class="post-title">
-                            Hello
+                            每日一题 204题 计数质数
                         </h2>
                         <div class="post-info">
-                            <time class="post-time">2018-12-12</time>
+                            <time class="post-time">2020-05-05</time>
                             
-                                <a href="https://xuyiliang.github.io/tag/7u7lRpQuc/" class="post-tag i-tag
-                            i-tag-banana">
-                            #Gridea
-                        </a>
-                                
                         </div>
                         
+                            <div class="post-feature-image" style="background-image: url('https://xuyiliang.github.io//post-images/mei-ri-yi-ti-204-ti-ji-shu-zhi-shu.jpeg')"></div>
+                            
                                 <div class="post-content">
-                                    <p>第一次搭建Blog，记录生活、心情、知识、笔记、创意... ...</p>
-<p><a href="https://github.com/xuyiliang">Github</a><br>
-<a href="https://xuyiliang.github.io/">博客主页</a></p>
+                                    <h4 id="统计所有小于非负整数-n-的质数的数量">统计所有小于非负整数 n 的质数的数量。</h4>
+<pre><code>示例:
+输入: 10
+输出: 4
+解释: 小于 10 的质数一共有 4 个, 它们是 2, 3, 5, 7 。
+</code></pre>
+<p>拿到题目，第一反应，写一个判断质数的函数，然后for循环，从2到n遍历一遍，但是这样<br>
+写的话，难免时间复杂度会很夸张，看到评论区有一种算法，叫做厄拉多塞筛法，感慨别人<br>
+的脑袋与自己的脑袋差太多了，记录下来，方便以后回顾。<br>
+思想如下：比如判断20以内的质数，<br>
+那么首先2是质数，所有偶数不再判断，因为都有一个2的因子，那就只判断奇数；<br>
+然后比如3是质数，那么6,9,12,15,18全部筛掉；<br>
+以此类推，5是质数，那么10,15,20全部筛掉。。。<br>
+最后就是2,3,5,7,11,13,17,19一共8个质数，最后直接贴代码：</p>
+<pre><code>class Solution {
+    public int countPrimes(int n) {
+        int res = 0;
+        //存放该数是否为质数,初始全部为false
+        boolean Primes[] = new boolean[n];
+        //当n大于2时一定有2这个质数
+        if(n&gt;2) res+=1;
+        //只遍历奇数，所以i+=2
+        for(int i=3;i&lt;n;i+=2){
+            //如果是质数
+            if(!Primes[i]){
+                //只计算奇数倍即可，因为偶数不遍历
+                for(int j=1;i*j&lt;n;j+=2){
+                    Primes[i*j]=true;
+                }
+                res++;
+            }
+        }
+        return res;
+    }
+}
+</code></pre>
+<p>继续学习，冲冲冲冲！！！</p>
 
                                 </div>
                     </article>
                     <!--  -->
                     
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://xuyiliang.github.io/post/mei-ri-yi-ti-di-125-ti-yan-zheng-wen-zi-chuan/">
+                                <h3 class="post-title">
+                                    每日一题 第125题——验证文字串
+                                </h3>
+                            </a>
+                        </div>
+                        
                             <div id="disqus_thread"></div>
                             <div id="gitalk-container"></div>
                 </div>
@@ -128,32 +168,54 @@
                 <!-- right -->
                 <div id="sidebar" class="main-container-right">
                     
-                                <!-- id-card -->
-                                
-    <div class="id_card i-card">
-        <div class="id_card-avatar" style="background-image: url(https://xuyiliang.github.io//images/avatar.png?v=1588645792241)">
-        </div>
-        <h1 class="id_card-title">
-            YiLiang_blog
-        </h1>
-        <h2 class="id_card-description">
-            Record Life
-        </h2>
-        <!--  -->
-        <div class="id_card-sns">
-            <!-- github -->
-            
-                    <!-- twitter -->
-                    
-                            <!-- weibo -->
-                            
-                                    <!-- facebook -->
-                                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#%E7%BB%9F%E8%AE%A1%E6%89%80%E6%9C%89%E5%B0%8F%E4%BA%8E%E9%9D%9E%E8%B4%9F%E6%95%B4%E6%95%B0-n-%E7%9A%84%E8%B4%A8%E6%95%B0%E7%9A%84%E6%95%B0%E9%87%8F">统计所有小于非负整数 n 的质数的数量。</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
         </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
     </div>
     
-                                    
+                            
 
                 </div>
 
