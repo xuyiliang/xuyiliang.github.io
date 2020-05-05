@@ -7,7 +7,7 @@
 <title>
     每日一题 204题 计数质数 | YiLiang_blog
 </title>
-<link rel="shortcut icon" href="https://xuyiliang.github.io//favicon.ico?v=1588645957515">
+<link rel="shortcut icon" href="https://xuyiliang.github.io//favicon.ico?v=1588646223181">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
 <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
@@ -28,7 +28,7 @@
     <div class="nav">
         <div class="logo">
             <a href="https://xuyiliang.github.io/">
-                <img class="avatar" src="https://xuyiliang.github.io//images/avatar.png?v=1588645957515" alt="">
+                <img class="avatar" src="https://xuyiliang.github.io//images/avatar.png?v=1588646223181" alt="">
             </a>
             <div class="site-title">
                 <h1>
@@ -115,9 +115,7 @@
 输出: 4
 解释: 小于 10 的质数一共有 4 个, 它们是 2, 3, 5, 7 。
 </code></pre>
-<p>拿到题目，第一反应，写一个判断质数的函数，然后for循环，从2到n遍历一遍，但是这样<br>
-写的话，难免时间复杂度会很夸张，看到评论区有一种算法，叫做厄拉多塞筛法，感慨别人<br>
-的脑袋与自己的脑袋差太多了，记录下来，方便以后回顾。<br>
+<p>拿到题目，第一反应，写一个判断质数的函数，然后for循环，从2到n遍历一遍，但是这样写的话，难免时间复杂度会很夸张，看到评论区有一种算法，叫做厄拉多塞筛法，感慨别人的脑袋与自己的脑袋差太多了，记录下来，方便以后回顾。<br>
 思想如下：比如判断20以内的质数，<br>
 那么首先2是质数，所有偶数不再判断，因为都有一个2的因子，那就只判断奇数；<br>
 然后比如3是质数，那么6,9,12,15,18全部筛掉；<br>

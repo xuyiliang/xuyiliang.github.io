@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xuyiliang.github.io/</id>
     <title>YiLiang_blog</title>
-    <updated>2020-05-05T02:33:52.334Z</updated>
+    <updated>2020-05-05T02:37:09.544Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xuyiliang.github.io/"/>
     <link rel="self" href="https://xuyiliang.github.io/atom.xml"/>
@@ -22,9 +22,7 @@
 输出: 4
 解释: 小于 10 的质数一共有 4 个, 它们是 2, 3, 5, 7 。
 </code></pre>
-<p>拿到题目，第一反应，写一个判断质数的函数，然后for循环，从2到n遍历一遍，但是这样<br>
-写的话，难免时间复杂度会很夸张，看到评论区有一种算法，叫做厄拉多塞筛法，感慨别人<br>
-的脑袋与自己的脑袋差太多了，记录下来，方便以后回顾。<br>
+<p>拿到题目，第一反应，写一个判断质数的函数，然后for循环，从2到n遍历一遍，但是这样写的话，难免时间复杂度会很夸张，看到评论区有一种算法，叫做厄拉多塞筛法，感慨别人的脑袋与自己的脑袋差太多了，记录下来，方便以后回顾。<br>
 思想如下：比如判断20以内的质数，<br>
 那么首先2是质数，所有偶数不再判断，因为都有一个2的因子，那就只判断奇数；<br>
 然后比如3是质数，那么6,9,12,15,18全部筛掉；<br>
@@ -209,7 +207,7 @@ Return picked
         <id>https://xuyiliang.github.io/post/mei-ri-yi-ti-leetcode11-zhuang-zui-duo-shui-de-rong-qi/</id>
         <link href="https://xuyiliang.github.io/post/mei-ri-yi-ti-leetcode11-zhuang-zui-duo-shui-de-rong-qi/">
         </link>
-        <updated>2020-04-17T17:02:52.000Z</updated>
+        <updated>2020-04-18T17:02:52.000Z</updated>
         <content type="html"><![CDATA[<p>直接放题目，这道题应该就比较熟悉了</p>
 <pre><code>给你 n 个非负整数 a1，a2，...，an，每个数代表坐标中的一个点 (i, ai) 。在坐标内画 n 条垂直线，垂直
 线 i 的两个端点分别为 (i, ai) 和 (i, 0)。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。
